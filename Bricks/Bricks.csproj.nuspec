@@ -18,5 +18,6 @@
   <files>
     <file src="..\bin\Bricks.dll" target="lib\net20"/>
     <file src="..\bin\Bricks.RuntimeFramework.dll" target="lib\net20"/>
+    <file src="..\bin\Bricks.Testing.dll" target="lib\net20"/>
   </files>
 </package>

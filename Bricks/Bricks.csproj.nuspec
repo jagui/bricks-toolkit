@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Bricks-Toolkit</id>
+    <version>1.0.0</version>
+    <authors>jagui</authors>
+    <owners>jagui</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://github.com/jagui/bricks-toolkit</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>vs2010 + nuget port of http://code.google.com/p/bricks-toolkit/ </description>
+    <copyright>Copyright 2012</copyright>
+    <tags>Bricks</tags>
+    <dependencies>
+      <dependency id="Castle.Core" version="3.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\bin\Bricks.dll" target="lib\net4"/>
+    <file src="..\bin\Bricks.RuntimeFramework.dll" target="lib\net4"/>
+  </files>
+</package>

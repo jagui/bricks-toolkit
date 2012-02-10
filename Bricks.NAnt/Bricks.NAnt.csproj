@@ -55,12 +55,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NAnt.Contrib.Tasks">
-      <HintPath>..\lib\nant\NAnt.Contrib.Tasks.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\lib\NAnt.Contrib.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="NAnt.Core">
-      <HintPath>..\lib\nant\NAnt.Core.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\lib\NAnt.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

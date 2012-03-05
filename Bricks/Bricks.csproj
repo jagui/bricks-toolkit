@@ -143,7 +143,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Bricks.csproj.nuspec" />
+    <None Include="Bricks.csproj.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Bricks.snk" />
     <None Include="packages.config" />
   </ItemGroup>

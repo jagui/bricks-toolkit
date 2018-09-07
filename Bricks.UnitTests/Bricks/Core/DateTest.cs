@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using Bricks.Core;
 using NUnit.Framework;
 
@@ -61,8 +62,8 @@ namespace Bricks.UnitTests.Bricks.Core
         public void CanAssignStringToDate()
         {
             Date date;
-            DateTime.Parse("12 Dec 2006").GetDateTimeFormats();
-            date = "12 Dec 2006";
+            string datestring = DateTime.Parse("12 Dec 2006").ToString("d");
+            date = datestring;
             Assert.AreEqual(new Date(2006, 12, 12), date);
         }
 
@@ -112,7 +113,7 @@ namespace Bricks.UnitTests.Bricks.Core
             Assert.AreEqual(extremeDate.ToDateTime(), Date.ToDataBaseValue(extremeDate));
         }
 
-        [Test, Ignore]
+        [Test]
         public void DateParse()
         {
             Assert.AreEqual(x, Date.Parse("010106"));
@@ -133,13 +134,13 @@ namespace Bricks.UnitTests.Bricks.Core
             Assert.AreEqual(new Date(2006, Month.May, 1), new Date(2006, Month.May, 31).FirstDayOfMonth);
         }
 
-        [Test, ExpectedException(typeof (FormatException))]
+        [Test]
         public void InvalidDate()
         {
-            Date.Parse("ss");
+            Assert.Throws<FormatException>(()=>Date.Parse("ss"));
         }
 
-        [Test, Ignore]
+        [Test]
         public void ShouldDisplayLongDateString()
         {
             var date = new Date(2006, Month.January, 2);

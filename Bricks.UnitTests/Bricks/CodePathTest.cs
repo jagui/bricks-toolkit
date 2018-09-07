@@ -39,10 +39,10 @@ namespace Bricks
             Assert.AreEqual("AnotherProperty", CodePath.Get(CodePath.New<CodePathTestClassContainingCallToVirtualMethod>().AnotherProperty));
         }
 
-        [Test, ExpectedException(typeof (NullReferenceException))]
+        [Test]
         public void ShouldThrowExceptionWhenTryToTraceAbstractClass()
         {
-            CodePath.Get(CodePath.New<CodePathTestClass>().AbstractClass.SomeProperty);
+            Assert.Throws<NullReferenceException>(()=>CodePath.Get(CodePath.New<CodePathTestClass>().AbstractClass.SomeProperty));
         }
 
         [Test]
@@ -58,20 +58,20 @@ namespace Bricks
                             CodePath.Complete(CodePath.New<CodePathTestClass>().YetanotherClass.AnotherClass.Name));
         }
 
-        [Test, ExpectedException(typeof(TraceException))]
+        [Test]
         public void ThrowTraceExceptionWhenPathIsNotCalled()
         {
             Assert.IsNull(CodePath.New<CodePathTestClass>().StringProperty);
-            Assert.IsNull(CodePath.New<CodePathTestClass>().StringProperty);
+            Assert.Throws<TraceException>(() => CodePath.New<CodePathTestClass>());
         }
 
-        [Test, ExpectedException(typeof (TraceException)), Ignore("Don't know how to implement it")]
+        [Test, Ignore("Don't know how to implement it")]
         public void ThrowTraceExceptionWhenMethodIsNotVirtual()
         {
             CodePath.Get(CodePath.New<CodePathTestClass>().NonVirtualProperty);
         }
 
-        [Test, ExpectedException(typeof (TraceException))]
+        [Test]
         [Ignore("Missing Feature- Vivek.")]
         public void ThrowTraceExceptionWhenChainedMethodIsNotVirtual()
         {
@@ -85,7 +85,7 @@ namespace Bricks
             Assert.AreEqual("StringProperty", CodePath.Last);
         }
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public void Reset()
         {
             CodePath.Reset();

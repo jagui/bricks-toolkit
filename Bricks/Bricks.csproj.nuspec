@@ -12,9 +12,9 @@
     <copyright>Copyright 2012</copyright>
     <tags>Bricks</tags>
     <dependencies>
-      <dependency id="Castle.Core" version="3.0.0" />
-      <dependency id="log4net" version="1.2.11"/>
-      <dependency id="NUnit" version="2.6.0"/>
+      <dependency id="Castle.Core" version="4.3.1" />
+      <dependency id="log4net" version="2.0.8" />
+      <dependency id="NUnit" version="3.10.1"/>
     </dependencies>
   </metadata>
   <files>

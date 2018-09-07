@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -305,7 +306,7 @@ namespace Bricks.Core
             moneyWithCurrencySymbol = TrimNonNumbersFromStart(moneyWithCurrencySymbol);
             foreach (char c in moneyWithCurrencySymbol)
                 if (isPartOfADecimal(c)) money.Append(c);
-            return decimal.Parse(money.ToString());
+            return decimal.Parse(money.ToString(), CultureInfo.InvariantCulture);
         }
 
         private static bool isPartOfADecimal(char c)

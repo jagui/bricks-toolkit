@@ -26,11 +26,11 @@ namespace Bricks.UnitTests.Bricks.RuntimeFramework
             Assert.AreEqual(false, @class.IsProperty("ToString"));
         }
 
-        [Test, ExpectedException(typeof (BricksException))]
+        [Test]
         public void NewWhenTheParametersAreWrong()
         {
             var @class = new Class(typeof(ClassForClassTest));
-            @class.New(0, 0);
+            Assert.Throws<BricksException>(()=>@class.New(0, 0));
         }
 
         [Test]
@@ -110,11 +110,11 @@ namespace Bricks.UnitTests.Bricks.RuntimeFramework
             Assert.AreEqual(true, types.Contains(typeof(InternalConstructorClass)));
         }
 
-        [Test, ExpectedException(typeof(BricksException))]
+        [Test]
         public void AllNonStandardTypesFromArray()
         {
             var @class = new Class(typeof(object[]));
-            @class.AllNonAutoSerializableTypes();
+            Assert.Throws<BricksException>(()=>@class.AllNonAutoSerializableTypes());
         }
     }
 

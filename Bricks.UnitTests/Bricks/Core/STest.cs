@@ -203,8 +203,8 @@ namespace Bricks.Core
             Assert.AreEqual(20000, S.Decimalise("Rs.20000"));
             Assert.AreEqual(30000, S.Decimalise("£30000"));
             Assert.AreEqual(40000, S.Decimalise("£4s0s0s0s0ffsf"));
-            Assert.AreEqual(40.234, S.Decimalise("£40.234"));
-            Assert.AreEqual(40.234, S.Decimalise("Rs.40.234"));
+            Assert.AreEqual(40.234M, S.Decimalise("£40.234"));
+            Assert.AreEqual(40.234M, S.Decimalise("Rs.40.234"));
         }
 
         [Test]

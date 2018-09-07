@@ -8,10 +8,10 @@ namespace Bricks.NAnt.Build
     [TestFixture]
     public class BuildCommandTest
     {
-        [Test, ExpectedException(typeof(BricksBuildException))]
+        [Test]
         public void NoCommand()
         {
-            TestBuildCommand();
+            Assert.Throws<BricksBuildException>(()=>TestBuildCommand());
         }
 
         [Test]
@@ -26,7 +26,7 @@ namespace Bricks.NAnt.Build
             TestBuildCommand("Compile", ",", "Test");
         }
 
-        [Test, Ignore]
+        [Test]
         public void When_the_command_takes_variable_number_of_arguments()
         {
             TestBuildCommand("TakesVariableArgument", "arg1", "arg2");

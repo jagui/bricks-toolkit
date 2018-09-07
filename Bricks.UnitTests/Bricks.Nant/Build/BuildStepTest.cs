@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Reflection;
 
 namespace Bricks.NAnt.Build
 {
@@ -7,7 +8,7 @@ namespace Bricks.NAnt.Build
     {
         private string[] callBackArguments;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void TestFixtureSetup()
         {
             BuildStepTargetForTest.Perform += Callback;
@@ -19,11 +20,10 @@ namespace Bricks.NAnt.Build
             callBackArguments = null;
         }
 
-        [Test, ExpectedException(typeof(BricksBuildException))]
+        [Test]
         public void When_method_doesnt_exist()
         {
-            BuildStep buildStep = new BuildStep(typeof(BuildStepTargetForTest), "Doesntexist");
-            buildStep.Execute();
+            Assert.Throws<BricksBuildException>(() => new BuildStep(typeof(BuildStepTargetForTest), "Doesntexist"));
         }
 
         [Test]
@@ -44,13 +44,11 @@ namespace Bricks.NAnt.Build
             Assert.AreEqual(0, callBackArguments.Length);
         }
 
-        [Test, ExpectedException(typeof(BricksBuildException))]
+        [Test]
         public void Execute_step_with_arguments_without_specifying_the_arguments()
         {
-            BuildStep buildStep = new BuildStep(typeof(BuildStepTargetForTest), "ActionWithArgument");
-            buildStep.Execute();
-            Assert.AreNotEqual(null, callBackArguments);
-            Assert.AreEqual(1, callBackArguments.Length);            
+            Assert.Throws<BricksBuildException>(() => new BuildStep(typeof(BuildStepTargetForTest), "ActionWithArgument"));
+            Assert.IsNull(callBackArguments);
         }
 
         [Test]
@@ -64,11 +62,11 @@ namespace Bricks.NAnt.Build
             Assert.AreEqual(arg, callBackArguments[0]);
         }
 
-        [Test, Ignore]
+        [Test]
         public void Execute_step_with_variable_arguments()
         {
             BuildStep buildStep = new BuildStep(typeof(BuildStepTargetForTest), "TakesVariableArgument", "arg1", "arg2");
-            buildStep.Execute();
+            Assert.Throws<TargetParameterCountException>(() => buildStep.Execute());
         }
 
         void Callback(string[] arguments)
